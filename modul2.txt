@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Tugas Modul 2 - HTML Multimedia, YouTube, dan API</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --hijau-tua: #14532d;
+    --hijau-sedang: #2e7d32;
+    --hijau-daun: #4caf50;
+    --hijau-muda: #e8f5e9;
+    --krem: #f4f8f0;
+    --coklat-tanah: #6d4c25;
+    --teks: #1b2b1e;
+  }
+  body {
+    font-family: "PT Sans", Arial, Helvetica, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    color: var(--teks);
+    background: var(--krem);
+  }
+  h1 {
+    text-align: center;
+    color: var(--hijau-tua);
+    font-family: "PT Sans", Georgia, serif;
+    border-bottom: 3px solid var(--hijau-daun);
+    padding-bottom: 12px;
+  }
+  h2 {
+    background: var(--hijau-tua);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-top: 40px;
+    font-family: "PT Sans", Arial, sans-serif;
+  }
+  h3 {
+    color: var(--hijau-tua);
+    border-bottom: 2px solid var(--hijau-daun);
+    padding-bottom: 4px;
+  }
+  .section {
+    background: #ffffff;
+    border: 1px solid #cfe3cf;
+    border-left: 6px solid var(--hijau-daun);
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 1px 3px rgba(20, 83, 45, 0.08);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px 0;
+  }
+  th, td {
+    border: 1px solid #b7d3b7;
+    padding: 6px 10px;
+    text-align: left;
+    font-size: 14px;
+  }
+  th {
+    background: var(--hijau-muda);
+    color: var(--hijau-tua);
+  }
+  code, pre {
+    background: #1b2b1e;
+    color: #d9f2d9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "Courier New", monospace;
+  }
+  pre {
+    padding: 12px;
+    overflow-x: auto;
+  }
+  .demo {
+    background: var(--hijau-muda);
+    border: 1px dashed var(--hijau-sedang);
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+  a {
+    color: var(--hijau-sedang);
+  }
+  button {
+    padding: 6px 14px;
+    margin: 3px;
+    cursor: pointer;
+    background: var(--hijau-sedang);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: "PT Sans", Arial, sans-serif;
+  }
+  button:hover {
+    background: var(--hijau-tua);
+  }
+  #div1, #div2 {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid var(--hijau-sedang);
+    background: #fff;
+  }
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--coklat-tanah);
+    font-size: 13px;
+    border-top: 2px solid var(--hijau-daun);
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<h1>PRAKTIKUM MULTIMEDIA<br>Modul 2: HTML - Audio, Video, YouTube, dan API</h1>
+<p style="text-align:center;">Tugas: Web sederhana yang memuat seluruh materi dari Modul 2.</p>
+
+<!-- ===================== DASAR TEORI ===================== -->
+<div class="section">
+  <h2>I. Dasar Teori Multimedia</h2>
+  <p>Multimedia dalam web adalah suara, musik, video, film, dan animasi. Multimedia hadir dalam
+  berbagai format dan bisa berupa apa saja yang bisa didengar atau dilihat. Contoh: gambar, musik,
+  suara, video, rekaman, film, animasi, dan lain-lain. Halaman web sering mengandung elemen
+  multimedia dari berbagai jenis dan format.</p>
+
+  <h3>Bentuk (Format) Multimedia</h3>
+  <p>Elemen multimedia (seperti audio atau video) disimpan dalam file media. Cara paling umum
+  untuk mengenali jenis file adalah dengan melihat ekstensinya, misalnya:
+  <code>.swf</code>, <code>.wav</code>, <code>.mp3</code>, <code>.mp4</code>, <code>.mpg</code>,
+  <code>.wmv</code>, dan <code>.avi</code>.</p>
+
+  <h3>Format Video yang Umum</h3>
+  <table>
+    <tr><th>Format</th><th>Ekstensi</th><th>Keterangan Singkat</th></tr>
+    <tr><td>MPEG</td><td>.mpg, .mpeg</td><td>Format video populer pertama di web, tidak didukung HTML5</td></tr>
+    <tr><td>AVI</td><td>.avi</td><td>Dikembangkan Microsoft, tidak didukung browser web</td></tr>
+    <tr><td>WMV</td><td>.wmv</td><td>Dikembangkan Microsoft, tidak didukung browser web</td></tr>
+    <tr><td>QuickTime</td><td>.mov</td><td>Dikembangkan Apple, tidak didukung browser web</td></tr>
+    <tr><td>RealVideo</td><td>.rm, .ram</td><td>Untuk streaming bandwidth rendah, tidak didukung browser web</td></tr>
+    <tr><td>Flash</td><td>.swf, .flv</td><td>Butuh plug-in tambahan di browser</td></tr>
+    <tr><td>Ogg</td><td>.ogg</td><td>Didukung HTML5</td></tr>
+    <tr><td>WebM</td><td>.webm</td><td>Didukung HTML5</td></tr>
+    <tr><td>MP4</td><td>.mp4</td><td>Didukung semua browser HTML5, direkomendasikan YouTube</td></tr>
+  </table>
+  <p><strong>Hanya video MP4, WebM, dan Ogg yang didukung standar HTML5.</strong></p>
+
+  <h3>Format Audio yang Umum</h3>
+  <table>
+    <tr><th>Format</th><th>Ekstensi</th><th>Keterangan Singkat</th></tr>
+    <tr><td>MIDI</td><td>.mid, .midi</td><td>Berisi not digital, bukan suara, tidak diputar di browser</td></tr>
+    <tr><td>RealAudio</td><td>.rm, .ram</td><td>Streaming bandwidth rendah, tidak diputar di browser</td></tr>
+    <tr><td>WMA</td><td>.wma</td><td>Dikembangkan Microsoft, tidak diputar di browser</td></tr>
+    <tr><td>AAC</td><td>.aac</td><td>Format default iTunes Apple, tidak diputar di browser</td></tr>
+    <tr><td>WAV</td><td>.wav</td><td>Didukung HTML5</td></tr>
+    <tr><td>Ogg</td><td>.ogg</td><td>Didukung HTML5</td></tr>
+    <tr><td>MP3</td><td>.mp3</td><td>Format musik paling populer, didukung semua browser</td></tr>
+    <tr><td>MP4</td><td>.mp4</td><td>Format video, bisa juga untuk audio</td></tr>
+  </table>
+  <p><strong>Hanya audio MP3, WAV, dan Ogg yang didukung standar HTML5.</strong></p>
+</div>
+
+<!-- ===================== AUDIO ===================== -->
+<div class="section">
+  <h2>II. Audio pada HTML5</h2>
+  <p>Elemen <code>&lt;audio&gt;</code> HTML5 menentukan standar untuk menyematkan audio pada
+  halaman web. Atribut <code>controls</code> menambahkan tombol play, pause, dan volume.
+  Elemen <code>&lt;source&gt;</code> memungkinkan menentukan beberapa alternatif file audio;
+  browser akan memakai format pertama yang dikenali.</p>
+
+  <div class="demo">
+    <h3>Contoh &lt;audio&gt;</h3>
+    <audio controls>
+      <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+      <source src="horse.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <pre>&lt;audio controls&gt;
+  &lt;source src="horse.ogg" type="audio/ogg"&gt;
+  &lt;source src="horse.mp3" type="audio/mpeg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;</pre>
+  </div>
+
+  <h3>Media Type Audio</h3>
+  <table>
+    <tr><th>File Format</th><th>Media Type</th></tr>
+    <tr><td>MP3</td><td>audio/mpeg</td></tr>
+    <tr><td>OGG</td><td>audio/ogg</td></tr>
+    <tr><td>WAV</td><td>audio/wav</td></tr>
+  </table>
+
+  <h3>Tag HTML5 Audio</h3>
+  <table>
+    <tr><th>Tag</th><th>Deskripsi</th></tr>
+    <tr><td>&lt;audio&gt;</td><td>Mendefinisikan konten suara</td></tr>
+    <tr><td>&lt;source&gt;</td><td>Mendefinisikan beberapa sumber media untuk &lt;audio&gt;/&lt;video&gt;</td></tr>
+  </table>
+</div>
+
+<!-- ===================== VIDEO ===================== -->
+<div class="section">
+  <h2>III. Video pada HTML5</h2>
+  <p>Elemen <code>&lt;video&gt;</code> HTML5 menentukan cara standar untuk menyematkan video pada
+  halaman web. Disarankan selalu menyertakan atribut <code>width</code> dan <code>height</code>
+  agar halaman tidak "flicker" saat video dimuat.</p>
+
+  <div class="demo">
+    <h3>Contoh &lt;video&gt; sederhana</h3>
+    <video width="320" height="240" controls>
+      <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+      <source src="movie.ogg" type="video/ogg">
+      Your browser does not support the video tag.
+    </video>
+    <pre>&lt;video width="320" height="240" controls&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;source src="movie.ogg" type="video/ogg"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;</pre>
+  </div>
+
+  <div class="demo">
+    <h3>Contoh Video dengan Kontrol JavaScript</h3>
+    <div style="text-align:center">
+      <button onclick="playPause()">Play/Pause</button>
+      <button onclick="makeBig()">Big</button>
+      <button onclick="makeSmall()">Small</button>
+      <button onclick="makeNormal()">Normal</button>
+      <br><br>
+      <video id="video1" width="420">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        <source src="mov_bbb.ogg" type="video/ogg">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+    <p style="font-size:13px;">Video courtesy of <a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.</p>
+    <pre>var myVideo = document.getElementById("video1");
+function playPause() {
+  if (myVideo.paused) myVideo.play();
+  else myVideo.pause();
+}
+function makeBig()    { myVideo.width = 560; }
+function makeSmall()  { myVideo.width = 320; }
+function makeNormal() { myVideo.width = 420; }</pre>
+  </div>
+
+  <h3>Media Type Video</h3>
+  <table>
+    <tr><th>File Format</th><th>Media Type</th></tr>
+    <tr><td>MP4</td><td>video/mp4</td></tr>
+    <tr><td>WebM</td><td>video/webm</td></tr>
+    <tr><td>Ogg</td><td>video/ogg</td></tr>
+  </table>
+
+  <h3>Tag HTML5 Video</h3>
+  <table>
+    <tr><th>Tag</th><th>Deskripsi</th></tr>
+    <tr><td>&lt;video&gt;</td><td>Mendefinisikan video atau film</td></tr>
+    <tr><td>&lt;source&gt;</td><td>Mendefinisikan beberapa sumber media</td></tr>
+    <tr><td>&lt;track&gt;</td><td>Mendefinisikan text track pada media player</td></tr>
+  </table>
+</div>
+
+<!-- ===================== YOUTUBE ===================== -->
+<div class="section">
+  <h2>IV. HTML YouTube Videos</h2>
+  <p>Cara termudah memutar video di HTML adalah menggunakan YouTube. Langkahnya: upload video
+  ke YouTube, catat video id-nya, lalu buat elemen <code>&lt;iframe&gt;</code> yang atribut
+  <code>src</code>-nya menunjuk ke URL video tersebut.</p>
+
+  <div class="demo">
+    <h3>Video YouTube Dasar</h3>
+    <iframe width="420" height="236"
+      src="https://www.youtube.com/embed/tgbNymZ7vqY">
+    </iframe>
+    <pre>&lt;iframe width="420" height="315"
+  src="https://www.youtube.com/embed/tgbNymZ7vqY"&gt;
+&lt;/iframe&gt;</pre>
+  </div>
+
+  <h3>Parameter YouTube</h3>
+  <ul>
+    <li><strong>Autoplay</strong>: tambahkan <code>?autoplay=1</code> pada URL agar video otomatis diputar saat halaman dibuka.</li>
+    <li><strong>Loop</strong>: tambahkan <code>?playlist=VIDEOID&amp;loop=1</code> agar video diulang terus-menerus.</li>
+    <li><strong>Controls</strong>: tambahkan <code>?controls=0</code> agar tombol kontrol pemutar disembunyikan (nilai default 1 menampilkan kontrol).</li>
+  </ul>
+  <pre>Autoplay: src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1"
+Loop:     src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1"
+Controls: src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"</pre>
+
+  <p><strong>Catatan:</strong> Tag <code>&lt;object&gt;</code> dan <code>&lt;embed&gt;</code> untuk
+  YouTube sudah <em>deprecated</em> sejak Januari 2015. Disarankan bermigrasi ke
+  <code>&lt;iframe&gt;</code>.</p>
+</div>
+
+<!-- ===================== GEOLOCATION API ===================== -->
+<div class="section">
+  <h2>V. HTML Geolocation API</h2>
+  <p>Geolocation API digunakan untuk mendapatkan posisi geografis pengguna. Karena berkaitan
+  dengan privasi, posisi hanya tersedia jika pengguna menyetujuinya. Metode
+  <code>getCurrentPosition()</code> digunakan untuk mengembalikan posisi pengguna.</p>
+
+  <div class="demo">
+    <h3>Contoh Geolocation</h3>
+    <p>Klik tombol untuk mendapatkan koordinat Anda.</p>
+    <button onclick="getLocation()">Try It</button>
+    <p id="demo"></p>
+  </div>
+
+  <h3>Properti Objek Hasil getCurrentPosition()</h3>
+  <table>
+    <tr><th>Properti</th><th>Keterangan</th></tr>
+    <tr><td>coords.latitude</td><td>Lintang (selalu dikembalikan)</td></tr>
+    <tr><td>coords.longitude</td><td>Bujur (selalu dikembalikan)</td></tr>
+    <tr><td>coords.accuracy</td><td>Akurasi posisi (selalu dikembalikan)</td></tr>
+    <tr><td>coords.altitude</td><td>Ketinggian di atas permukaan laut (jika tersedia)</td></tr>
+    <tr><td>coords.altitudeAccuracy</td><td>Akurasi ketinggian (jika tersedia)</td></tr>
+    <tr><td>coords.heading</td><td>Arah dalam derajat searah jarum jam dari Utara (jika tersedia)</td></tr>
+    <tr><td>coords.speed</td><td>Kecepatan dalam meter/detik (jika tersedia)</td></tr>
+    <tr><td>timestamp</td><td>Waktu respon (jika tersedia)</td></tr>
+  </table>
+</div>
+
+<!-- ===================== DRAG AND DROP API ===================== -->
+<div class="section">
+  <h2>VI. HTML Drag and Drop API</h2>
+  <p>Agar sebuah elemen dapat di-drag, atribut <code>draggable</code> diberi nilai <code>true</code>.
+  Event <code>ondragstart</code> menentukan data apa yang di-drag menggunakan
+  <code>dataTransfer.setData()</code>. Event <code>ondragover</code> mengizinkan area penerima drop
+  dengan memanggil <code>event.preventDefault()</code>. Event <code>ondrop</code> menjalankan aksi
+  saat data dilepaskan, diambil kembali dengan <code>dataTransfer.getData()</code>.</p>
+
+  <div class="demo">
+    <h3>Contoh Drag and Drop</h3>
+    <p>Seret gambar bolak-balik di antara dua kotak berikut.</p>
+    <div class="clearfix">
+      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src="https://www.w3schools.com/html/img_w3slogo.gif" draggable="true"
+             ondragstart="drag(event)" id="drag1" width="70" height="24">
+      </div>
+      <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+  </div>
+
+  <pre>function allowDrop(ev) { ev.preventDefault(); }
+function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}</pre>
+</div>
+
+<footer>
+  Tugas Praktikum Multimedia &mdash; Modul 2: HTML Audio, Video, YouTube, dan API
+</footer>
+
+<script>
+// ---- Video JS control ----
+var myVideo = document.getElementById("video1");
+function playPause() {
+  if (myVideo.paused) myVideo.play();
+  else myVideo.pause();
+}
+function makeBig()    { myVideo.width = 560; }
+function makeSmall()  { myVideo.width = 320; }
+function makeNormal() { myVideo.width = 420; }
+
+// ---- Geolocation ----
+var demoEl = document.getElementById("demo");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    demoEl.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+function showPosition(position) {
+  demoEl.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+}
+function showError(error) {
+  demoEl.innerHTML = "Tidak dapat mengambil lokasi (izin ditolak atau tidak tersedia).";
+}
+
+// ---- Drag and Drop ----
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+</body>
+</html>

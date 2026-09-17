@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desain Bootstrap - Form Registrasi</title>
+
+    <!-- Memanggil file CSS Bootstrap 3 (versi yang memakai kelas form-group / form-control) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery wajib dipanggil lebih dulu, baru file JavaScript Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            padding-top: 30px;
+            padding-bottom: 80px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            border-top: 1px solid #e7e7e7;
+            padding: 12px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Halaman Pertama Menggunakan Bootstrap</h1>
+        <hr>
+
+        <!-- ===== GRID BOOTSTRAP : satu baris dibagi 2 kolom col-sm-6 ===== -->
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Tampilan 1</h2>
+                <p>Kolom ini memakai kelas col-sm-6, artinya menempati 6 dari 12 grid.
+                   Pengaturan sm bersifat naik ke atas, sehingga layar md dan lg ikut
+                   mengikuti aturan ini. Pada layar ponsel (xs) kolom akan menumpuk ke bawah.</p>
+            </div>
+            <div class="col-sm-6">
+                <h2>Tampilan 2</h2>
+                <p>Bootstrap membagi laman web menjadi 12 grid. Setiap baris harus berjumlah
+                   total 12 grid, misalnya 6 + 6, 4 + 8, atau 4 + 4 + 4. Semua baris (row)
+                   harus berada di dalam kelas container atau container-fluid.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- ===== FORM REGISTRASI ===== -->
+        <h2>Form Registrasi</h2>
+        <form action="">
+            <div class="col-sm-10">
+
+                <div class="form-group">
+                    <label for="nama">Nama :</label>
+                    <input type="text" class="form-control" id="nama" name="nama"
+                           placeholder="Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                           placeholder="Email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password :</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="Password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="jk">Jenis Kelamin:</label>
+                    <select class="form-control" id="jk" name="jk">
+                        <option>Pria</option>
+                        <option>Wanita</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </div>
+        </form>
+
+    </div>
+
+    <!-- ===== FOOTER BERISI NAMA DAN NIM ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">
+                <strong>Nama :</strong> Friederik Ferdinand &nbsp;|&nbsp;
+                <strong>NIM :</strong> 240211060035
+                <br>Praktikum Multimedia &ndash; Modul HTML dan Bootstrap
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
